@@ -18,13 +18,13 @@ exports.decode = function(latLonZoom) {
   var lat = 0;
   var lon = 0;
   
-  var i = 0;
+  var i, shift;
   for(i = 0, shift = MAPSWITHME_MAX_COORD_BITS - 3; i < latLonBytes; i++, shift -= 3) {
     var a = base64ReverseArray[latLonStr[i].charCodeAt(0)];
-    lat1 =  (((a >> 5) & 1) << 2 |
+    var lat1 =  (((a >> 5) & 1) << 2 |
                  ((a >> 3) & 1) << 1 |
                  ((a >> 1) & 1));
-    lon1 =  (((a >> 4) & 1) << 2 |
+    var lon1 =  (((a >> 4) & 1) << 2 |
                  ((a >> 2) & 1) << 1 |
                         (a & 1));
     lat |= lat1 << shift;
