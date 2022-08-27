@@ -17,7 +17,8 @@ exports.decode = function(latLonZoom) {
 
   var lat = 0;
   var lon = 0;
-
+  
+  var i = 0;
   for(i = 0, shift = MAPSWITHME_MAX_COORD_BITS - 3; i < latLonBytes; i++, shift -= 3) {
     var a = base64ReverseArray[latLonStr[i].charCodeAt(0)];
     lat1 =  (((a >> 5) & 1) << 2 |
